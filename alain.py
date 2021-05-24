@@ -31,7 +31,6 @@ async def _(event):
   
 @alain.on(events.NewMessage(func=lambda e: e.is_private))
 async def _(event):
-  await event.get_sender
   ha = event.forward_to(OWNER_ID)
   
 @alain.on(events.NewMessage(func=lambda e: e.is_private))

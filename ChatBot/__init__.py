@@ -5,7 +5,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
 from var import var
 
-
 def start() -> scoped_session:
     engine = create_engine(var.DB_URL)
     BASE.metadata.bind = engine

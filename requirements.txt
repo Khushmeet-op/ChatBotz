@@ -1,0 +1,4 @@
+telethon
+sqlalchemy>=1.2
+cryptg
+psycopg2

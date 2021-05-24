@@ -36,7 +36,6 @@ async def _(event):
 @alain.on(events.NewMessage(func=lambda e: e.is_private))
 async def _(event):
   nah = await event.get_reply_message()
-  idhai = nah.id
   if nah is None:
     return
   lel = nah.frwd_from.from_id
@@ -44,10 +43,10 @@ async def _(event):
   if event.sender.id == OWNER_ID:
     if event.text is not None and event.media:
       pic = lolpic(event.media)
-      await alain.send_file(kk, pic, caption=event.text, reply_to=idhai)
+      await alain.send_file(kk, pic, caption=event.text, reply_to=nah)
     else:
       hakk = event.raw_text
-      await bot.send_message(kk, hakk, reply_to=idhai)
+      await bot.send_message(kk, hakk, reply_to=nah)
       
       
 print('Bot iz alive.')

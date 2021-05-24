@@ -3,7 +3,7 @@
 # Fully done by @Alain_xD..!
 
 from telethon import TelegramClient, events, Button
-from var impprt var
+from var import var
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.utils import pack_bot_file_id as lolpic
 import re, os, random, asyncio, logging

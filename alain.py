@@ -5,6 +5,7 @@
 from telethon import TelegramClient, events, Button
 from var impprt var
 from telethon.tl.functions.users import GetFullUserRequest
+from telethon.utils import pack_bot_file_id as lolpic
 import re, os, random, asyncio, logging
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.INFO)
@@ -27,6 +28,25 @@ async def _(event):
   nice = await alain(GetFullUserRequest(event.sender_id))
   wlcm_text = f"**Hi {nice.user.first_name}, I'm {event.chat.first_name}..!\nYou can contact my [master](tg://user?id={OWNER_ID}) through this bot\n\nThis bot was made by @Alain_xD ~ @BotzCity***"
   await event.reply(wlcm_text)
+  
+@alain.on(events.NewMessage(func=lambda e: e.is_private))
+async def _(event):
+  await event.get_sender
+  ha = event.forward_to(OWNER_ID)
+  
+@alain.on(events.NewMessage(func=lambda e: e.is_private))
+async def _(event):
+  nah = await event.get_reply_message()
+  idhai = nah.id
+  if nah is None:
+    return
+  lel = nah.frwd_from.from_id
+  kk = lel.user_id
+  if event.sender.id == OWNER_ID:
+    if event.text is not None and event.media:
+      pic = lolpic(event.media)
+      await alain.send_file(kk, pic, caption=event.text, reply_to=idhai)
+    else:
   
 print('Bot iz alive.')
 print('Do visit @BotzCity..!')

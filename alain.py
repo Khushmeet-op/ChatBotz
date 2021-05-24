@@ -47,7 +47,10 @@ async def _(event):
       pic = lolpic(event.media)
       await alain.send_file(kk, pic, caption=event.text, reply_to=idhai)
     else:
-  
+      hakk = event.raw_text
+      await bot.send_message(kk, hakk, reply_to=idhai)
+      
+      
 print('Bot iz alive.')
 print('Do visit @BotzCity..!')
 alain.run_until_disconnected()

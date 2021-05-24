@@ -38,7 +38,7 @@ async def _(event):
   nah = await event.get_reply_message()
   if nah is None:
     return
-  lel = nah.frwd_from.from_id
+  lel = nah.fwd_from.from_id
   kk = lel.user_id
   if event.sender.id == OWNER_ID:
     if event.text is not None and event.media:

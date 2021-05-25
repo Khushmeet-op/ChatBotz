@@ -1,4 +1,5 @@
-
+<p align="center">
+  <img src="./ChatBot/Resources/Extras/IMG_20210525_121047_953.jpg
 # Chat Bot
 
 - https://heroku.com/deploy

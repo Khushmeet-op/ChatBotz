@@ -37,18 +37,26 @@ async def _(event):
   
 @alain.on(events.NewMessage(func=lambda e: e.is_private))
 async def _(event):
+  if not event.reply_to_msg_id:
+    return
   nah = await event.get_reply_message()
-  hmm_id = nah.fwd_from.from_id.user_id
-  usr, use = hmm_id(nah.id)
+  don = nah.id
+  kk = nah.sender_id
+  if nah.fwd_from:
+   try:
+    lel = nah.fwd_from.from_id
+    kk = lel.user_id
+   except:
+    pass
   if event.sender.id == OWNER_ID and nah:
    if event.raw_text.startswith("/"):
       return
    if event.text is not None and event.media:
       pic = lolpic(event.media)
-      await alain.send_file(usr, pic, caption=event.text, reply_to=use)
+      await alain.send_file(kk, pic, caption=event.text, reply_to=nah)
    else:
       hakk = event.raw_text
-      await alain.send_message(usr, hakk, reply_to=use)
+      await alain.send_message(kk, hakk, reply_to=don)
       
       
 print('Bot iz alive.')

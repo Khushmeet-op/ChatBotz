@@ -31,7 +31,7 @@ async def _(event):
   
 @alain.on(events.NewMessage(func=lambda e: e.is_private))
 async def _(event):
-  if event.sender.id == OWNER_ID:
+  if event.sender.id == OWNER_ID and event.is_reply:
        return
   ha = await event.forward_to(var.OWNER_ID)
   

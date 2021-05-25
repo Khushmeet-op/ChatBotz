@@ -40,9 +40,13 @@ async def _(event):
   if not event.reply_to_msg_id:
     return
   nah = await event.get_reply_message()
+  kk = nah.sender_id
   if nah.fwd_from:
-   lel = nah.fwd_from.from_id
-   kk = lel.user_id
+   try:
+    lel = nah.fwd_from.from_id
+    kk = lel.user_id
+   except:
+    pass
   if event.sender.id == OWNER_ID and nah:
    if event.raw_text.startswith("/"):
       return

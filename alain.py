@@ -7,7 +7,6 @@ from var import var
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.utils import pack_bot_file_id as lolpic
 import re, os, random, asyncio, logging
-from database import hmm_id
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.INFO)
 
@@ -39,6 +38,7 @@ async def _(event):
 @alain.on(events.NewMessage(func=lambda e: e.is_private))
 async def _(event):
   nah = await event.get_reply_message()
+  hmm_id = nah.fwd_from.from_id.user_id
   usr, use = hmm_id(nah.id)
   if event.sender.id == OWNER_ID and nah:
    if event.raw_text.startswith("/"):

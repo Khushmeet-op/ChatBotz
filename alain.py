@@ -7,6 +7,7 @@ from var import var
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.utils import pack_bot_file_id as lolpic
 import re, os, random, asyncio, logging
+from database import hmm_id
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.INFO)
 
@@ -37,23 +38,17 @@ async def _(event):
   
 @alain.on(events.NewMessage(func=lambda e: e.is_private))
 async def _(event):
-  if not event.reply_to_msg_id:
-    return
   nah = await event.get_reply_message()
-  if nah.fwd_from:
-     if nah.fwd_from.from_id:
-       user_id = nah.fwd_from.from_id.user_id
-  else:
-      return
+  usr, use = hmm_id(nah.id)
   if event.sender.id == OWNER_ID and nah:
    if event.raw_text.startswith("/"):
       return
    if event.text is not None and event.media:
       pic = lolpic(event.media)
-      await alain.send_file(int(user_id), pic, caption=event.text, reply_to=nah)
+      await alain.send_file(usr, pic, caption=event.text, reply_to=use)
    else:
       hakk = event.raw_text
-      await alain.send_message(int(user_id), hakk, reply_to=don)
+      await alain.send_message(usr, hakk, reply_to=use)
       
       
 print('Bot iz alive.')

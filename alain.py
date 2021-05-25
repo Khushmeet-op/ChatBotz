@@ -40,6 +40,7 @@ async def _(event):
   if not event.reply_to_msg_id:
     return
   nah = await event.get_reply_message()
+  don = nah.id
   kk = nah.sender_id
   if nah.fwd_from:
    try:
@@ -55,7 +56,7 @@ async def _(event):
       await alain.send_file(kk, pic, caption=event.text, reply_to=nah)
    else:
       hakk = event.raw_text
-      await alain.send_message(kk, hakk, reply_to=nah)
+      await alain.send_message(kk, hakk, reply_to=don)
       
       
 print('Bot iz alive.')

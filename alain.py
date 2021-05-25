@@ -31,6 +31,8 @@ async def _(event):
   
 @alain.on(events.NewMessage(func=lambda e: e.is_private))
 async def _(event):
+  if event.sender.id == OWNER_ID:
+       return
   ha = await event.forward_to(var.OWNER_ID)
   
 @alain.on(events.NewMessage(func=lambda e: e.is_private))
@@ -40,11 +42,13 @@ async def _(event):
     return
   lel = nah.fwd_from.from_id
   kk = lel.user_id
-  if event.sender.id == OWNER_ID:
-    if event.text is not None and event.media:
+  if event.sender.id == OWNER_ID and nah:
+   if event.raw_text.startswith("/"):
+      return
+   if event.text is not None and event.media:
       pic = lolpic(event.media)
       await alain.send_file(kk, pic, caption=event.text, reply_to=nah)
-    else:
+   else:
       hakk = event.raw_text
       await bot.send_message(kk, hakk, reply_to=nah)
       

@@ -40,23 +40,20 @@ async def _(event):
   if not event.reply_to_msg_id:
     return
   nah = await event.get_reply_message()
-  don = nah.id
-  kk = nah.sender_id
   if nah.fwd_from:
-   try:
-    lel = nah.fwd_from.from_id
-    kk = lel.user_id
-   except:
-    pass
+     if nah.fwd_from.from_id:
+       user_id = nah.fwd_from.from_id.user_id
+  else:
+      return
   if event.sender.id == OWNER_ID and nah:
    if event.raw_text.startswith("/"):
       return
    if event.text is not None and event.media:
       pic = lolpic(event.media)
-      await alain.send_file(kk, pic, caption=event.text, reply_to=nah)
+      await alain.send_file(int(user_id), pic, caption=event.text, reply_to=nah)
    else:
       hakk = event.raw_text
-      await alain.send_message(kk, hakk, reply_to=don)
+      await alain.send_message(int(user_id), hakk, reply_to=don)
       
       
 print('Bot iz alive.')

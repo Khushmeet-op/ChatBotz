@@ -55,7 +55,7 @@ async def _(event):
       await alain.send_file(kk, pic, caption=event.text, reply_to=nah)
    else:
       hakk = event.raw_text
-      await bot.send_message(kk, hakk, reply_to=nah)
+      await alain.send_message(kk, hakk, reply_to=nah)
       
       
 print('Bot iz alive.')

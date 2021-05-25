@@ -28,7 +28,7 @@ def users():
 
 def hmm_id(message_id: int):
     try:
-        pro_id = SESSION.query(Users).get(str(message))
+        pro_id = SESSION.query(users).get(str(message))
         return int(pro_id.chat_id), pro_id.ha_id
     finally:
         SESSION.close()

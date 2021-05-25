@@ -37,11 +37,12 @@ async def _(event):
   
 @alain.on(events.NewMessage(func=lambda e: e.is_private))
 async def _(event):
-  nah = await event.get_reply_message()
-  if nah is None:
+  if not event.reply_to_msg_id:
     return
-  lel = nah.fwd_from.from_id
-  kk = lel.user_id
+  nah = await event.get_reply_message()
+  if nah.fwd_from:
+   lel = nah.fwd_from.from_id
+   kk = lel.user_id
   if event.sender.id == OWNER_ID and nah:
    if event.raw_text.startswith("/"):
       return

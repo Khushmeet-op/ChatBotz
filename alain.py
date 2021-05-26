@@ -46,6 +46,7 @@ async def _(event):
    try:
     lel = nah.fwd_from.from_id
     kk = lel.user_id
+    user_id, reply_hai = (lel.user_id, nah.id)
    except:
     pass
   if event.sender.id == OWNER_ID and nah:
@@ -53,10 +54,10 @@ async def _(event):
       return
    if event.text is not None and event.media:
       pic = lolpic(event.media)
-      await alain.send_file(kk, pic, caption=event.text, reply_to=nah)
+      await alain.send_file(user_id, pic, caption=event.text, reply_to=reply_hai)
    else:
       hakk = event.raw_text
-      await alain.send_message(kk, hakk, reply_to=don)
+      await alain.send_message(user_id, hakk, reply_to=reply_hai)
       
       
 print('Bot iz alive.')

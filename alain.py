@@ -26,7 +26,7 @@ except Exception as e:
 async def _(event):
   noice = await alain(GetFullUserRequest(OWNER_ID))
   nice = await alain(GetFullUserRequest(event.sender_id))
-  wlcm_text = f"**Hi {nice.user.first_name}, I'm {event.chat.first_name}..!\nYou can contact my [master](tg://user?id={OWNER_ID}) through this bot\n\nThis bot was made by @Alain_xD ~ @BotzCity***"
+  wlcm_text = f"**Hi {nice.user.first_name}, I'm {event.chat.first_name}..!\nYou can contact my [master](tg://user?id={OWNER_ID}) through this bot\n\nThis bot was made by @Khushmeet1~ @hacking_hubs***"
   await event.reply(wlcm_text)
   
 @alain.on(events.NewMessage(func=lambda e: e.is_private))
@@ -61,5 +61,5 @@ async def _(event):
       
       
 print('Bot iz alive.')
-print('Do visit @BotzCity..!')
+print('Do visit @hacking_hubs..!')
 alain.run_until_disconnected()
